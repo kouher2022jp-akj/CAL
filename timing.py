@@ -7,7 +7,7 @@ def get_seconds_left(start_ticks, limit_seconds=15):
     return max(0, limit_seconds - elapsed_seconds)
 
 
-def draw_time(screen, time_box, seconds_left):
+def draw_time(screen, ui_system, time_box, seconds_left):
     if seconds_left >= 8:
         border_color = (60, 180, 100)
 
@@ -17,11 +17,19 @@ def draw_time(screen, time_box, seconds_left):
     else:
         border_color = (220, 70, 90)
 
-    pygame.draw.rect(screen, (255, 255, 255), time_box, border_radius=15)
+    pygame.draw.rect(
+        screen, (255, 255, 255), time_box, border_radius=ui_system.value(15)
+    )
 
-    pygame.draw.rect(screen, border_color, time_box, 4, border_radius=15)
+    pygame.draw.rect(
+        screen,
+        border_color,
+        time_box,
+        ui_system.value(4),
+        border_radius=ui_system.value(15),
+    )
 
-    time_font = pygame.font.Font(None, 35)
+    time_font = ui_system.font(35)
 
     time_text = time_font.render(f"{seconds_left}", True, (40, 50, 100))
 

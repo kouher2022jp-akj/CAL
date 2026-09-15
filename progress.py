@@ -1,5 +1,5 @@
 def calculate_change(time_percent):
-    return time_percent / 20
+    return time_percent / 4
 
 
 def increase(current_progress, time_percent):
